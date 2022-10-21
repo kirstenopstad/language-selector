@@ -108,10 +108,11 @@ function calculateResult(talA, talB, talC, talD) {
   console.log(winner);
 
   if (winner === "tie") {
-    tieCalculate(talA, talB, talC, talD)
-    return(winner, tieCalculate(talA, talB, talC, talD))
+    const tieResults = tieCalculate(talA, talB, talC, talD);
+    console.log("tieResults: " + tieResults);
+    return tieResults;
   } else {
-    return(winner);
+    return winner;
   }
 
   
@@ -144,13 +145,16 @@ function tieCalculate(talA, talB, talC, talD) {
   // Check function
   console.log(tie1, tie2);
 
-  return (tie1, tie2);
+  // Store tied winners in an array
+  const winners = [tie1, tie2];
+
+  return winners;
 
 }
 
 // UI Logic
 // Display results
-function displayResults(winningLang, tie1, tie2) {
+function displayResults(winningLang) {
   // Define answer key
   const a = "Language1";
   const b = "Language2";
@@ -159,10 +163,8 @@ function displayResults(winningLang, tie1, tie2) {
 
   // Check inputs
   console.log(winningLang);
-  console.log(tie1);
-  console.log(tie2);
   
-  //Initialize langResult variable
+  //Initialize langResult variable for single winner
   let langResult;
 
   // Determine language name for single winner
@@ -175,8 +177,17 @@ function displayResults(winningLang, tie1, tie2) {
   } else if (winningLang === "d") {
     langResult = d;
   } else {
+    // if tie, display....
     langResult = "to make up your mind"
   };
+
+  // Define individual tied winners by accessing index of array input
+  const tie1 = winningLang[0];
+  const tie2 = winningLang[1];
+
+  // Initialize tieResult variables
+  let tieResult1;
+  let tieResult2;
 
   // Determine language names for tie
   if (tie1 === "a") {
@@ -199,8 +210,10 @@ function displayResults(winningLang, tie1, tie2) {
   
   // Display results based on winner
   document.getElementById("results").removeAttribute("class");
+  // If a single winner
   document.getElementById("langResult").innerText = langResult;
-  // If tied, display which languages are tied
+  
+  // If tied, display which languages are tied 
   document.getElementById("tieResult1").innerText = tieResult1;
   document.getElementById("tieResult2").innerText = tieResult2;
 };
