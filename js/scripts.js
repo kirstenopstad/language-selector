@@ -264,5 +264,7 @@ window.addEventListener("load", function() {
     event.preventDefault();
     // Display quiz questions again
     document.getElementById("quizQuestions").removeAttribute("class");
+    // Hide results
+    resetDisplay();
   });
 });
