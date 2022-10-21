@@ -215,6 +215,9 @@ function displayResults(winningLang) {
   
   // Display Results
 
+  // Hide quiz questions
+  document.getElementById("quizQuestions").setAttribute("class", "hidden");
+
   // Unhide results div
   document.getElementById("results").removeAttribute("class");
 
@@ -255,6 +258,11 @@ window.addEventListener("load", function() {
       // Display results
       displayResults(result);
   });
+
+  const button = document.getElementById("tryAgain")
+  button.addEventListener("click", function(event) {
+    event.preventDefault();
+    // Display quiz questions again
+    document.getElementById("quizQuestions").removeAttribute("class");
+  });
 });
-  
-    

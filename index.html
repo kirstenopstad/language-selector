@@ -18,7 +18,7 @@
         <p>Directions for how to take this quiz.</p>
       </div>
       <!-- Quiz -->
-      <div class="quizQuestions">
+      <div id="quizQuestions">
         <form class="quiz">
           <!-- Question 1 -->
           <div class="form-check question">
@@ -30,9 +30,9 @@
             <label class="btn btn-secondary" for="q1answer2">B. Answer 2</label>
             <br>
             <input id="q1answer3" name="question1" type="radio" value="c"></input>
-            <label class="btn btn-secondary" for="answer3">C. Answer 3</label>
+            <label class="btn btn-secondary" for="q1answer3">C. Answer 3</label>
             <br>
-            <input id="answer4" name="question1" type="radio" value="d"></input>
+            <input id="q1answer4" name="question1" type="radio" value="d"></input>
             <label class="btn btn-secondary" for="q1answer4">D. Answer 4</label>
           </div>
           <!-- Question 2 -->
@@ -107,6 +107,7 @@
         <div class="hidden" id="not-a-tie">
           <h3>You should learn <span class="language" id="langResult">placeholder</span>!</h3>
         </div>
+        <button id="tryAgain" type="button" class="btn btn-primary">Try Again</button>
       </div>
     </div>
   </body>
