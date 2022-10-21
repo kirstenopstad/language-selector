@@ -91,32 +91,58 @@ function retrieveAndTally () {
 
 function calculateResult(talA, talB, talC, talD) {
   let winner;
-  let otherWinner;
   // Determine which letter has the highest tally
-  if (talA === 2 && talB === 2) {
+  if (talA > talB && talA > talC && talA > talD) {
     winner = "a";
-    otherWinner = "b";
-  } else if (talA === 2 && talC === 2) {
-    winner = "a";
-    otherWinner = "c"
-  } else if (talA === 2 && talD === 2) {
-    winner = "a";
-    otherWinner = "d"
-  } else if (talB === 2 && talC === 2) {
+  } else if (talB > talA && talB > talC && talB > talD) {
     winner = "b";
-    otherWinner = "c";
-  } else if (talB === 2 && talD === 2) {
-    winner = "b";
-    otherWinner = "d"
-  } else if (talC === 2 && talD === 2) {
+  } else if (talC > talA && talC > talB && talC > talD) {
     winner = "c";
-    otherWinner = "d";
+  } else if (talD > talA && talD > talB && talD > talC) {
+    winner = "d"; 
+  } else {
+    winner = "tie";
   };
 
   // Check calculate functionality
   console.log(winner);
 
-  return winner;
+  if (winner === "tie") {
+    tieCalculate(talA, talB, talC, talD)
+  }
+
+  return(winner);
+}
+
+function tieCalculate(talA, talB, talC, talD) {
+  // If tie, determine other winner
+  let tie1;
+  let tie2;
+  if (talA === 2 && talB === 2) {
+    tie1 = "a";
+    tie2 = "b";
+  } else if (talA === 2 && talC === 2) {
+    tie1 = "a";
+    tie2 = "c"
+  } else if (talA === 2 && talD === 2) {
+    tie1 = "a";
+    tie2 = "d"
+  } else if (talB === 2 && talC === 2) {
+    tie1 = "b";
+    tie2 = "c";
+  } else if (talB === 2 && talD === 2) {
+    tie1 = "b";
+    tie2 = "d"
+  } else if (talC === 2 && talD === 2) {
+    tie1 = "c";
+    tie2 = "d";
+  };
+
+  // Check function
+  console.log(tie1, tie2);
+
+  return (tie1, tie2);
+
 }
 
 // UI Logic
@@ -143,6 +169,8 @@ function displayResults(winningLang) {
     langResult = "to make up your mind"
   }
 
+  // TODO: Display results for tie
+  
   // Display results based on winner
   document.getElementById("results").removeAttribute("class");
   document.getElementById("langResult").innerText = langResult;
