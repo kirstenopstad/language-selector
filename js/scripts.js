@@ -91,17 +91,26 @@ function retrieveAndTally () {
 
 function calculateResult(talA, talB, talC, talD) {
   let winner;
+  let otherWinner;
   // Determine which letter has the highest tally
-  if (talA > talB && talA > talC && talA > talD) {
+  if (talA === 2 && talB === 2) {
     winner = "a";
-  } else if (talB > talA && talB > talC && talB > talD) {
+    otherWinner = "b";
+  } else if (talA === 2 && talC === 2) {
+    winner = "a";
+    otherWinner = "c"
+  } else if (talA === 2 && talD === 2) {
+    winner = "a";
+    otherWinner = "d"
+  } else if (talB === 2 && talC === 2) {
     winner = "b";
-  } else if (talC > talA && talC > talB && talC > talD) {
+    otherWinner = "c";
+  } else if (talB === 2 && talD === 2) {
+    winner = "b";
+    otherWinner = "d"
+  } else if (talC === 2 && talD === 2) {
     winner = "c";
-  } else if (talD > talA && talD > talB && talD > talC) {
-    winner = "d";
-  } else {
-    winner = "tie";
+    otherWinner = "d";
   };
 
   // Check calculate functionality
