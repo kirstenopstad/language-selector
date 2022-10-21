@@ -181,6 +181,8 @@ function displayResults(winningLang) {
     langResult = "to make up your mind"
   };
 
+  // Tie Conditions:
+
   // Define individual tied winners by accessing index of array input
   const tie1 = winningLang[0];
   const tie2 = winningLang[1];
@@ -208,6 +210,10 @@ function displayResults(winningLang) {
     tieResult2 = d;
   };
   
+  // TODO: add logic to display:
+    // Single winner
+    // Multpile winners
+
   // Display results based on winner
   document.getElementById("results").removeAttribute("class");
   // If a single winner
