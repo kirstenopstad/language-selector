@@ -155,6 +155,9 @@ function tieCalculate(talA, talB, talC, talD) {
 // UI Logic
 // Display results
 function displayResults(winningLang) {
+  // Clear previous results
+  resetDisplay();
+
   // Define answer key
   const a = "Language1";
   const b = "Language2";
@@ -177,8 +180,8 @@ function displayResults(winningLang) {
   } else if (winningLang === "d") {
     langResult = d;
   } else {
-    // if tie, display....
-    langResult = "to make up your mind"
+    // if tie
+    langResult = "tie"
   };
 
   // Tie Conditions:
@@ -210,20 +213,35 @@ function displayResults(winningLang) {
     tieResult2 = d;
   };
   
-  // TODO: add logic to display:
-    // Single winner
-    // Multpile winners
+  // Display Results
 
-  // Display results based on winner
+  // Unhide results div
   document.getElementById("results").removeAttribute("class");
-  // If a single winner
-  document.getElementById("langResult").innerText = langResult;
+
+  // If no tie results
+  if (langResult != "tie") {
+    // Unhide results div
+    document.getElementById("not-a-tie").removeAttribute("class");
+    // Display single winner
+    document.getElementById("langResult").innerText = langResult;
+  } else {
+    // Unhide tied text
+    document.getElementById("tie").removeAttribute("class");
+    // Display which languages are tied 
+    document.getElementById("tieResult1").innerText = tieResult1;
+    document.getElementById("tieResult2").innerText = tieResult2;
+  }
   
-  // If tied, display which languages are tied 
-  document.getElementById("tieResult1").innerText = tieResult1;
-  document.getElementById("tieResult2").innerText = tieResult2;
 };
 
+function resetDisplay() {
+  // Hide results
+  document.getElementById("results").setAttribute("class", "hidden");
+  // Hide tie div
+  document.getElementById("tie").setAttribute("class", "hidden");
+  // Hide not-a-tie div
+  document.getElementById("not-a-tie").setAttribute("class", "hidden");
+};
 
 // When page loads, run these functions:
 window.addEventListener("load", function() {
@@ -234,10 +252,9 @@ window.addEventListener("load", function() {
     event.preventDefault();
       // Retrieve & tally answers, calculate results
       const result = retrieveAndTally();
-      displayResults(result);
       // Display results
+      displayResults(result);
   });
-
 });
   
     
