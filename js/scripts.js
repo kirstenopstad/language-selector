@@ -1,5 +1,5 @@
 // Retrieve user input and tally answers
-retrieveAndTally () {
+function retrieveAndTally () {
   // Store user answers in variables
   const ans1 = document.getElementById("question1").value;
   const ans2 = document.getElementById("question2").value;
