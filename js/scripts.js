@@ -1,9 +1,9 @@
 // Retrieve user input and tally answers
 function retrieveAndTally () {
   // Store user answers in variables
-  const ans1 = document.getElementById("question1").value;
-  const ans2 = document.getElementById("question2").value;
-  const ans3 = document.getElementById("question3").value;
+  const ans1 = document.querySelector("input[name='question1']:checked").value;
+  const ans2 = document.querySelector("input[name='question2']:checked").value;
+  const ans3 = document.querySelector("input[name='question3']:checked").value;
 
   // Tally answers 
   let tallyA = 0;
@@ -50,11 +50,34 @@ function retrieveAndTally () {
     // Display invalid input error below question 3
   };
 
+  // Check tally functionality
   console.log("TallyA = " + tallyA);
   console.log("TallyB = " + tallyB);
   console.log("TallyC = " + tallyC);
   console.log("TallyD = " + tallyD);
+
+  return calculateResult(tallyA, tallyB, tallyC, tallyD);
 };
+
+function calculateResult(talA, talB, talC, talD) {
+  let winner;
+  // Determine which letter has the highest tally
+  if (talA > talB && talA > talC && talA > talD) {
+    winner = "a";
+  } else if (talB > talA && talB > talC && talB > talD) {
+    winner = "b";
+  } else if (talC > talA && talC > talB && talC > talD) {
+    winner = "c";
+  } else if (talD > talA && talD > talB && talD > talC) {
+    winner = "d";
+  } else {
+    winner = "tie";
+  };
+
+  // Check calculate functionality
+  console.log(winner);
+
+}
 
 // When page loads, run these functions:
 window.addEventListener("load", function() {
