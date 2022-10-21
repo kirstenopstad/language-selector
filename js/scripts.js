@@ -6,6 +6,8 @@ function retrieveAndTally () {
   const ans1 = document.querySelector("input[name='question1']:checked").value;
   const ans2 = document.querySelector("input[name='question2']:checked").value;
   const ans3 = document.querySelector("input[name='question3']:checked").value;
+  const ans4 = document.querySelector("input[name='question4']:checked").value;
+  const ans5 = document.querySelector("input[name='question5']:checked").value;
 
   // Tally answers 
   let tallyA = 0;
@@ -50,6 +52,32 @@ function retrieveAndTally () {
     tallyD += 1;
   } else {
     // Display invalid input error below question 3
+  };
+
+  // Tabulate answer to question 4
+  if (ans4 === "a") {
+    tallyA += 1;
+  } else if (ans4 === "b") {
+    tallyB += 1;
+  } else if (ans4 === "c") {
+    tallyC += 1;
+  } else if (ans4 === "d") {
+    tallyD += 1;
+  } else {
+    // Display invalid input error below question 4
+  };
+
+  // Tabulate answer to question 5
+  if (ans5 === "a") {
+    tallyA += 1;
+  } else if (ans5 === "b") {
+    tallyB += 1;
+  } else if (ans5 === "c") {
+    tallyC += 1;
+  } else if (ans5 === "d") {
+    tallyD += 1;
+  } else {
+    // Display invalid input error below question 5
   };
 
   // Check tally functionality
