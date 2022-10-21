@@ -2,156 +2,169 @@
 
 // Retrieve user input and tally answers
 function retrieveAndTally () {
-  // Store user answers in variables
-  const ans1 = document.querySelector("input[name='question1']:checked").value;
-  const ans2 = document.querySelector("input[name='question2']:checked").value;
-  const ans3 = document.querySelector("input[name='question3']:checked").value;
-  const ans4 = document.querySelector("input[name='question4']:checked").value;
-  const ans5 = document.querySelector("input[name='question5']:checked").value;
-
-  // Tally answers 
-  let tallyA = 0;
-  let tallyB = 0;
-  let tallyC = 0;
-  let tallyD = 0;
-
-  // Tabulate answer to question 1
-  if (ans1 === "a") {
-    tallyA += 1;
-  } else if (ans1 === "b") {
-    tallyB += 1;
-  } else if (ans1 === "c") {
-    tallyC += 1;
-  } else if (ans1 === "d") {
-    tallyD += 1;
+  // Validate input
+  if (!document.querySelector("input[name='question1']:checked") || 
+    !document.querySelector("input[name='question2']:checked") ||
+    !document.querySelector("input[name='question3']:checked") ||
+    !document.querySelector("input[name='question4']:checked") ||
+    !document.querySelector("input[name='question5']:checked")) {
+    // Return error
+    return 0;
   } else {
-    // Display invalid input error below question 1
+    // Run all other functions
+
+    // Store user answers in variables
+    const ans1 = document.querySelector("input[name='question1']:checked").value;
+    const ans2 = document.querySelector("input[name='question2']:checked").value;
+    const ans3 = document.querySelector("input[name='question3']:checked").value;
+    const ans4 = document.querySelector("input[name='question4']:checked").value;
+    const ans5 = document.querySelector("input[name='question5']:checked").value;
+
+
+
+    // Tally answers 
+    let tallyA = 0;
+    let tallyB = 0;
+    let tallyC = 0;
+    let tallyD = 0;
+
+    // Tabulate answer to question 1
+    if (ans1 === "a") {
+      tallyA += 1;
+    } else if (ans1 === "b") {
+      tallyB += 1;
+    } else if (ans1 === "c") {
+      tallyC += 1;
+    } else if (ans1 === "d") {
+      tallyD += 1;
+    } else {
+      // Display invalid input error below question 1
+    };
+
+    // Tabulate answer to question 2
+    if (ans2 === "a") {
+      tallyA += 1;
+    } else if (ans2 === "b") {
+      tallyB += 1;
+    } else if (ans2 === "c") {
+      tallyC += 1;
+    } else if (ans2 === "d") {
+      tallyD += 1;
+    } else {
+      // Display invalid input error below question 2
+    };
+
+    // Tabulate answer to question 3
+    if (ans3 === "a") {
+      tallyA += 1;
+    } else if (ans3 === "b") {
+      tallyB += 1;
+    } else if (ans3 === "c") {
+      tallyC += 1;
+    } else if (ans3 === "d") {
+      tallyD += 1;
+    } else {
+      // Display invalid input error below question 3
+    };
+
+    // Tabulate answer to question 4
+    if (ans4 === "a") {
+      tallyA += 1;
+    } else if (ans4 === "b") {
+      tallyB += 1;
+    } else if (ans4 === "c") {
+      tallyC += 1;
+    } else if (ans4 === "d") {
+      tallyD += 1;
+    } else {
+      // Display invalid input error below question 4
+    };
+
+    // Tabulate answer to question 5
+    if (ans5 === "a") {
+      tallyA += 1;
+    } else if (ans5 === "b") {
+      tallyB += 1;
+    } else if (ans5 === "c") {
+      tallyC += 1;
+    } else if (ans5 === "d") {
+      tallyD += 1;
+    } else {
+      // Display invalid input error below question 5
+    };
+
+    // Check tally functionality
+    console.log("TallyA = " + tallyA);
+    console.log("TallyB = " + tallyB);
+    console.log("TallyC = " + tallyC);
+    console.log("TallyD = " + tallyD);
+
+    return calculateResult(tallyA, tallyB, tallyC, tallyD);
   };
 
-  // Tabulate answer to question 2
-  if (ans2 === "a") {
-    tallyA += 1;
-  } else if (ans2 === "b") {
-    tallyB += 1;
-  } else if (ans2 === "c") {
-    tallyC += 1;
-  } else if (ans2 === "d") {
-    tallyD += 1;
-  } else {
-    // Display invalid input error below question 2
-  };
+  function calculateResult(talA, talB, talC, talD) {
+    let winner;
+    // Determine which letter has the highest tally
+    if (talA > talB && talA > talC && talA > talD) {
+      winner = "a";
+    } else if (talB > talA && talB > talC && talB > talD) {
+      winner = "b";
+    } else if (talC > talA && talC > talB && talC > talD) {
+      winner = "c";
+    } else if (talD > talA && talD > talB && talD > talC) {
+      winner = "d"; 
+    } else {
+      winner = "tie";
+    };
 
-  // Tabulate answer to question 3
-  if (ans3 === "a") {
-    tallyA += 1;
-  } else if (ans3 === "b") {
-    tallyB += 1;
-  } else if (ans3 === "c") {
-    tallyC += 1;
-  } else if (ans3 === "d") {
-    tallyD += 1;
-  } else {
-    // Display invalid input error below question 3
-  };
+    // Check calculate functionality
+    console.log(winner);
 
-  // Tabulate answer to question 4
-  if (ans4 === "a") {
-    tallyA += 1;
-  } else if (ans4 === "b") {
-    tallyB += 1;
-  } else if (ans4 === "c") {
-    tallyC += 1;
-  } else if (ans4 === "d") {
-    tallyD += 1;
-  } else {
-    // Display invalid input error below question 4
-  };
+    if (winner === "tie") {
+      const tieResults = tieCalculate(talA, talB, talC, talD);
+      console.log("tieResults: " + tieResults);
+      return tieResults;
+    } else {
+      return winner;
+    }
 
-  // Tabulate answer to question 5
-  if (ans5 === "a") {
-    tallyA += 1;
-  } else if (ans5 === "b") {
-    tallyB += 1;
-  } else if (ans5 === "c") {
-    tallyC += 1;
-  } else if (ans5 === "d") {
-    tallyD += 1;
-  } else {
-    // Display invalid input error below question 5
-  };
-
-  // Check tally functionality
-  console.log("TallyA = " + tallyA);
-  console.log("TallyB = " + tallyB);
-  console.log("TallyC = " + tallyC);
-  console.log("TallyD = " + tallyD);
-
-  return calculateResult(tallyA, tallyB, tallyC, tallyD);
-};
-
-function calculateResult(talA, talB, talC, talD) {
-  let winner;
-  // Determine which letter has the highest tally
-  if (talA > talB && talA > talC && talA > talD) {
-    winner = "a";
-  } else if (talB > talA && talB > talC && talB > talD) {
-    winner = "b";
-  } else if (talC > talA && talC > talB && talC > talD) {
-    winner = "c";
-  } else if (talD > talA && talD > talB && talD > talC) {
-    winner = "d"; 
-  } else {
-    winner = "tie";
-  };
-
-  // Check calculate functionality
-  console.log(winner);
-
-  if (winner === "tie") {
-    const tieResults = tieCalculate(talA, talB, talC, talD);
-    console.log("tieResults: " + tieResults);
-    return tieResults;
-  } else {
-    return winner;
+    
   }
 
-  
-}
+  function tieCalculate(talA, talB, talC, talD) {
+    // If tie, determine other winner
+    let tie1;
+    let tie2;
+    if (talA === 2 && talB === 2) {
+      tie1 = "a";
+      tie2 = "b";
+    } else if (talA === 2 && talC === 2) {
+      tie1 = "a";
+      tie2 = "c"
+    } else if (talA === 2 && talD === 2) {
+      tie1 = "a";
+      tie2 = "d"
+    } else if (talB === 2 && talC === 2) {
+      tie1 = "b";
+      tie2 = "c";
+    } else if (talB === 2 && talD === 2) {
+      tie1 = "b";
+      tie2 = "d"
+    } else if (talC === 2 && talD === 2) {
+      tie1 = "c";
+      tie2 = "d";
+    };
 
-function tieCalculate(talA, talB, talC, talD) {
-  // If tie, determine other winner
-  let tie1;
-  let tie2;
-  if (talA === 2 && talB === 2) {
-    tie1 = "a";
-    tie2 = "b";
-  } else if (talA === 2 && talC === 2) {
-    tie1 = "a";
-    tie2 = "c"
-  } else if (talA === 2 && talD === 2) {
-    tie1 = "a";
-    tie2 = "d"
-  } else if (talB === 2 && talC === 2) {
-    tie1 = "b";
-    tie2 = "c";
-  } else if (talB === 2 && talD === 2) {
-    tie1 = "b";
-    tie2 = "d"
-  } else if (talC === 2 && talD === 2) {
-    tie1 = "c";
-    tie2 = "d";
+    // Check function
+    console.log(tie1, tie2);
+
+    // Store tied winners in an array
+    const winners = [tie1, tie2];
+
+    return winners;
+
   };
-
-  // Check function
-  console.log(tie1, tie2);
-
-  // Store tied winners in an array
-  const winners = [tie1, tie2];
-
-  return winners;
-
-}
-
+};
 // UI Logic
 // Display results
 function displayResults(winningLang) {
@@ -213,6 +226,12 @@ function displayResults(winningLang) {
     tieResult2 = d;
   };
   
+  // If error 
+  if (winningLang === 0) {
+    // Display error
+    document.getElementById("error").removeAttribute("class");
+  }
+
   // Display Results
 
   // Hide quiz questions

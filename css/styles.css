@@ -25,3 +25,9 @@ body {
   margin: auto;
   max-width: 500px;
 }
+
+#error {
+  color: red;
+  font-style: italic;
+  max-width: 400px;
+}
