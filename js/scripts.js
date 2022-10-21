@@ -1,3 +1,5 @@
+// Business logic
+
 // Retrieve user input and tally answers
 function retrieveAndTally () {
   // Store user answers in variables
@@ -77,7 +79,38 @@ function calculateResult(talA, talB, talC, talD) {
   // Check calculate functionality
   console.log(winner);
 
+  return winner;
 }
+
+// UI Logic
+// Display results
+function displayResults(winningLang) {
+  // Define answer key
+  const a = "Language1";
+  const b = "Language2";
+  const c = "Language3";
+  const d = "Language4";
+  
+  //Initialize langResult variable
+
+  // Add logic to determine language name
+  if (winningLang === "a") {
+    langResult = a;
+  } else if (winningLang === "b") {
+    langResult = b;
+  } else if (winningLang === "c") {
+    langResult = c;
+  } else if (winningLang === "d") {
+    langResult = d;
+  } else {
+    langResult = "to make up your mind"
+  }
+
+  // Display results based on winner
+  document.getElementById("results").removeAttribute("class");
+  document.getElementById("langResult").innerText = langResult;
+};
+
 
 // When page loads, run these functions:
 window.addEventListener("load", function() {
@@ -86,9 +119,9 @@ window.addEventListener("load", function() {
   form.addEventListener("submit", function(event) {
     // Prevent page from reloading on submission
     event.preventDefault();
-      // Retrieve & tally answers
-      retrieveAndTally ();
-      // Calculate result
+      // Retrieve & tally answers, calculate results
+      const result = retrieveAndTally();
+      displayResults(result);
       // Display results
   });
 
