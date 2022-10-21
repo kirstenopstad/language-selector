@@ -6,8 +6,22 @@ body {
   display: none;
 }
 
-.quiz {
+#quizQuestions {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.quiz {
+  max-width: 600px;
+}
+
+.btn {
+  max-width: 500px;
+}
+
+.quizBlurb {
+  display: block;
+  margin: auto;
+  max-width: 500px;
 }

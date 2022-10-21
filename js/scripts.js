@@ -159,10 +159,10 @@ function displayResults(winningLang) {
   resetDisplay();
 
   // Define answer key
-  const a = "Language1";
-  const b = "Language2";
-  const c = "Language3";
-  const d = "Language4";
+  const a = "Ruby";
+  const b = "Javascript";
+  const c = "C#";
+  const d = "Python";
 
   // Check inputs
   console.log(winningLang);
