@@ -7,93 +7,120 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <!-- Header -->
-    <div class="header">
-      <h1>Programming Language Selector</h1>
-    </div>
-    <!-- Quiz blurb with directions on how to take quiz -->
-    <div class="quizBlurb">
-      <p>Directions for how to take this quiz.</p>
-    </div>
-    <!-- Quiz -->
-    <div class="quizQuestions">
-      <form>
-        <!-- Question 1 -->
-        <h4>Question 1</h4>
-        <input id="answer1" name="question1" type="radio" value="a"></input>
-        <label for="answer1">A. Answer 1</label>
-        <br>
-        <input id="answer2" name="question1" type="radio" value="b"></input>
-        <label for="answer2">B. Answer 2</label>
-        <br>
-        <input id="answer3" name="question1" type="radio" value="c"></input>
-        <label for="answer1">C. Answer 3</label>
-        <br>
-        <input id="answer4" name="question1" type="radio" value="d"></input>
-        <label for="answer4">D. Answer 4</label>
-        <!-- Question 2 -->
-        <h4>Question 2</h4>
-        <input id="answer1" name="question2" type="radio" value="a"></input>
-        <label for="answer1">A. Answer 1</label>
-        <br>
-        <input id="answer2" name="question2" type="radio" value="b"></input>
-        <label for="answer2">B. Answer 2</label>
-        <br>
-        <input id="answer3" name="question2" type="radio" value="c"></input>
-        <label for="answer1">C. Answer 3</label>
-        <br>
-        <input id="answer4" name="question2" type="radio" value="d"></input>
-        <label for="answer4">D. Answer 4</label>
-        <!-- Question 3 -->
-        <h4>Question 3</h4>
-        <input id="answer1" name="question3" type="radio" value="a"></input>
-        <label for="answer1">A. Answer 1</label>
-        <br>
-        <input id="answer2" name="question3" type="radio" value="b"></input>
-        <label for="answer2">B. Answer 2</label>
-        <br>
-        <input id="answer3" name="question3" type="radio" value="c"></input>
-        <label for="answer1">C. Answer 3</label>
-        <br>
-        <input id="answer4" name="question3" type="radio" value="d"></input>
-        <label for="answer4">D. Answer 4</label>
-        <!-- Question 4 -->
-        <h4>Question 4</h4>
-        <input id="answer1" name="question4" type="radio" value="a"></input>
-        <label for="answer1">A. Answer 1</label>
-        <br>
-        <input id="answer2" name="question4" type="radio" value="b"></input>
-        <label for="answer2">B. Answer 2</label>
-        <br>
-        <input id="answer3" name="question4" type="radio" value="c"></input>
-        <label for="answer1">C. Answer 3</label>
-        <br>
-        <input id="answer4" name="question4" type="radio" value="d"></input>
-        <label for="answer4">D. Answer 4</label>
-        <!-- Question 5 -->
-        <h4>Question 5</h4>
-        <input id="answer1" name="question5" type="radio" value="a"></input>
-        <label for="answer1">A. Answer 1</label>
-        <br>
-        <input id="answer2" name="question5" type="radio" value="b"></input>
-        <label for="answer2">B. Answer 2</label>
-        <br>
-        <input id="answer3" name="question5" type="radio" value="c"></input>
-        <label for="answer1">C. Answer 3</label>
-        <br>
-        <input id="answer4" name="question5" type="radio" value="d"></input>
-        <label for="answer4">D. Answer 4</label>
-        <br>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-    <!-- Quiz results! -->
-    <div class="hidden" id="results">
-      <div class="hidden" id="tie">
-        <h3>You are tied between <span id="tieResult1"></span> and <span id="tieResult2"></span>!</h3>
+    <!-- Bootstrap container -->
+    <div class="container-fluid">
+      <!-- Header -->
+      <div class="header">
+        <h1>Programming Language Selector</h1>
       </div>
-      <div class="hidden" id="not-a-tie">
-        <h3>You should learn <span class="language" id="langResult">placeholder</span>!</h3>
+      <!-- Quiz blurb with directions on how to take quiz -->
+      <div class="quizBlurb">
+        <p>Directions for how to take this quiz.</p>
+      </div>
+      <!-- Quiz -->
+      <div class="quizQuestions">
+        <form>
+          <!-- Question 1 -->
+          <h4>Question 1</h4>
+          <div class="form-check">
+            ///
+            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+            <label class="btn btn-secondary" for="option1">Checked</label>
+            
+            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+            <label class="btn btn-secondary" for="option2">Radio</label>
+            
+            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" disabled>
+            <label class="btn btn-secondary" for="option3">Disabled</label>
+            
+            <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+            <label class="btn btn-secondary" for="option4">Radio</label>
+            ///
+
+            <input type="radio" class="btn-check" name="question1" id="answer1" value="a" autocomplete="off">
+            <label class="btn btn-secondary"  for="answer1">A. Answer 1</label>
+            
+            <input class="btn-check" id="answer2" name="question1" type="radio" value="b" autocomplete="off">
+            <label class="btn btn-secondary"  for="answer2">B. Answer 2</label>
+            
+            <input class="btn-check" id="answer3" name="question1" type="radio" value="c" autocomplete="off">
+            <label class="btn btn-secondary"  for="answer3">C. Answer 3</label>
+            
+            <input class="btn-check" id="answer4" name="question1" type="radio" value="d" autocomplete="off">
+            <label class="btn btn-secondary"  for="answer4">D. Answer 4</label>
+          </div>
+          <!-- Question 2 -->
+          <div class="form-check">
+            <h4>Question 2</h4>
+            <input id="answer1" name="question2" type="radio" value="a"></input>
+            <label class="btn btn-secondary"  for="answer1">A. Answer 1</label>
+            <br>
+            <input id="answer2" name="question2" type="radio" value="b"></input>
+            <label class="btn btn-secondary"  for="answer2">B. Answer 2</label>
+            <br>
+            <input id="answer3" name="question2" type="radio" value="c"></input>
+            <label class="btn btn-secondary"  for="answer3">C. Answer 3</label>
+            <br>
+            <input id="answer4" name="question2" type="radio" value="d"></input>
+            <label class="btn btn-secondary"  for="answer4">D. Answer 4</label>
+          </div>
+          <!-- Question 3 -->
+          <div class="form-check">
+            <h4>Question 3</h4>
+            <input id="answer1" name="question3" type="radio" value="a"></input>
+            <label class="btn btn-secondary"  for="answer1">A. Answer 1</label>
+            <br>
+            <input id="answer2" name="question3" type="radio" value="b"></input>
+            <label class="btn btn-secondary"  for="answer2">B. Answer 2</label>
+            <br>
+            <input id="answer3" name="question3" type="radio" value="c"></input>
+            <label class="btn btn-secondary"  for="answer3">C. Answer 3</label>
+            <br>
+            <input id="answer4" name="question3" type="radio" value="d"></input>
+            <label class="btn btn-secondary"  for="answer4">D. Answer 4</label>
+          </div>
+          <!-- Question 4 -->
+          <div class="form-check">
+            <h4>Question 4</h4>
+            <input id="answer1" name="question4" type="radio" value="a"></input>
+            <label class="btn btn-secondary"  for="answer1">A. Answer 1</label>
+            <br>
+            <input id="answer2" name="question4" type="radio" value="b"></input>
+            <label class="btn btn-secondary"  for="answer2">B. Answer 2</label>
+            <br>
+            <input id="answer3" name="question4" type="radio" value="c"></input>
+            <label class="btn btn-secondary"  for="answer3">C. Answer 3</label>
+            <br>
+            <input id="answer4" name="question4" type="radio" value="d"></input>
+            <label class="btn btn-secondary"  for="answer4">D. Answer 4</label>
+          </div>
+          <!-- Question 5 -->
+          <div class="form-check">
+            <h4>Question 5</h4>
+            <input id="answer1" name="question5" type="radio" value="a"></input>
+            <label class="btn btn-secondary"  for="answer1">A. Answer 1</label>
+            <br>
+            <input id="answer2" name="question5" type="radio" value="b"></input>
+            <label class="btn btn-secondary"  for="answer2">B. Answer 2</label>
+            <br>
+            <input id="answer3" name="question5" type="radio" value="c"></input>
+            <label class="btn btn-secondary"  for="answer3">C. Answer 3</label>
+            <br>
+            <input id="answer4" name="question5" type="radio" value="d"></input>
+            <label class="btn btn-secondary"  for="answer4">D. Answer 4</label>
+          </div>
+          <br>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <!-- Quiz results! -->
+      <div class="hidden" id="results">
+        <div class="hidden" id="tie">
+          <h3>You are tied between <span id="tieResult1"></span> and <span id="tieResult2"></span>!</h3>
+        </div>
+        <div class="hidden" id="not-a-tie">
+          <h3>You should learn <span class="language" id="langResult">placeholder</span>!</h3>
+        </div>
       </div>
     </div>
   </body>
