@@ -109,9 +109,12 @@ function calculateResult(talA, talB, talC, talD) {
 
   if (winner === "tie") {
     tieCalculate(talA, talB, talC, talD)
+    return(winner, tieCalculate(talA, talB, talC, talD))
+  } else {
+    return(winner);
   }
 
-  return(winner);
+  
 }
 
 function tieCalculate(talA, talB, talC, talD) {
@@ -147,16 +150,22 @@ function tieCalculate(talA, talB, talC, talD) {
 
 // UI Logic
 // Display results
-function displayResults(winningLang) {
+function displayResults(winningLang, tie1, tie2) {
   // Define answer key
   const a = "Language1";
   const b = "Language2";
   const c = "Language3";
   const d = "Language4";
+
+  // Check inputs
+  console.log(winningLang);
+  console.log(tie1);
+  console.log(tie2);
   
   //Initialize langResult variable
+  let langResult;
 
-  // Add logic to determine language name
+  // Determine language name for single winner
   if (winningLang === "a") {
     langResult = a;
   } else if (winningLang === "b") {
@@ -167,13 +176,33 @@ function displayResults(winningLang) {
     langResult = d;
   } else {
     langResult = "to make up your mind"
-  }
+  };
 
-  // TODO: Display results for tie
+  // Determine language names for tie
+  if (tie1 === "a") {
+    tieResult1 = a;
+  } else if (tie1 === "b") {
+    tieResult1 = b;
+  } else if (tie1 === "c") {
+    tieResult1 = c;
+  } else {
+    tieResult1 = d;
+  };
+
+  if (tie2 === "b") {
+    tieResult2 = b;
+  } else if (tie2 === "c") {
+    tieResult2 = c;
+  } else {
+    tieResult2 = d;
+  };
   
   // Display results based on winner
   document.getElementById("results").removeAttribute("class");
   document.getElementById("langResult").innerText = langResult;
+  // If tied, display which languages are tied
+  document.getElementById("tieResult1").innerText = tieResult1;
+  document.getElementById("tieResult2").innerText = tieResult2;
 };
 
 
