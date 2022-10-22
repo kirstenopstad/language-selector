@@ -11,7 +11,6 @@ function retrieveAndTally () {
     // Return error
     return 0;
   } else {
-    // Run all other functions
 
     // Store user answers in variables
     const ans1 = document.querySelector("input[name='question1']:checked").value;
@@ -230,9 +229,11 @@ function displayResults(winningLang) {
   if (winningLang === 0) {
     // Display error
     document.getElementById("error").removeAttribute("class");
-  }
-
-  // Display Results
+    return 0;
+  } else { 
+    // Hide error
+    document.getElementById("error").setAttribute("class", "hidden");
+  };
 
   // Hide quiz questions
   document.getElementById("quizQuestions").setAttribute("class", "hidden");
@@ -252,11 +253,13 @@ function displayResults(winningLang) {
     // Display which languages are tied 
     document.getElementById("tieResult1").innerText = tieResult1;
     document.getElementById("tieResult2").innerText = tieResult2;
-  }
+  };  
   
 };
 
 function resetDisplay() {
+  // Hide error message
+  document.getElementById("error").setAttribute("class", "hidden");
   // Hide results
   document.getElementById("results").setAttribute("class", "hidden");
   // Hide tie div
