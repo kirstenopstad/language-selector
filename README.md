@@ -67,6 +67,7 @@ _{Epicodus recommends deleting the project from your desktop, re-cloning the pro
 ## Known Bugs
 
 * When a user submits a complete form, the quiz questions are supposed to disappear (be hidden) but functionality was lost when the "validate" portion of the business logic was implemented.
+* README: gh-pages link not working.
 
 * If you find one, please email me at kirsten.opstad@gmail.com with the subject **[_Repo Name_] Bug** and include:
   * BUG: _A brief description of the bug_
