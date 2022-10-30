@@ -1,25 +1,14 @@
 // Business logic
 
-// Retrieve user input and tally answers
-function retrieveAndTally () {
-  // Validate input
-  if (!document.querySelector("input[name='question1']:checked") || 
-    !document.querySelector("input[name='question2']:checked") ||
-    !document.querySelector("input[name='question3']:checked") ||
-    !document.querySelector("input[name='question4']:checked") ||
-    !document.querySelector("input[name='question5']:checked")) {
-    // Return error
-    return 0;
-  } else {
-
-    // Store user answers in variables
-    const ans1 = document.querySelector("input[name='question1']:checked").value;
-    const ans2 = document.querySelector("input[name='question2']:checked").value;
-    const ans3 = document.querySelector("input[name='question3']:checked").value;
-    const ans4 = document.querySelector("input[name='question4']:checked").value;
-    const ans5 = document.querySelector("input[name='question5']:checked").value;
-
-
+// Tally answers
+function tallyResults(ansList) {
+  
+    // ansList
+    const ans1 = ansList[0];
+    const ans2 = ansList[1];
+    const ans3 = ansList[2];
+    const ans4 = ansList[3];
+    const ans5 = ansList[4];
 
     // Tally answers 
     let tallyA = 0;
@@ -93,10 +82,10 @@ function retrieveAndTally () {
     };
 
     // Check tally functionality
-    console.log("TallyA = " + tallyA);
-    console.log("TallyB = " + tallyB);
-    console.log("TallyC = " + tallyC);
-    console.log("TallyD = " + tallyD);
+    // console.log("TallyA = " + tallyA);
+    // console.log("TallyB = " + tallyB);
+    // console.log("TallyC = " + tallyC);
+    // console.log("TallyD = " + tallyD);
 
     return calculateResult(tallyA, tallyB, tallyC, tallyD);
   };
@@ -117,18 +106,18 @@ function retrieveAndTally () {
     };
 
     // Check calculate functionality
-    console.log(winner);
+    // console.log("Winner: " + winner);
 
     if (winner === "tie") {
       const tieResults = tieCalculate(talA, talB, talC, talD);
-      console.log("tieResults: " + tieResults);
+      // console.log("tieResults: " + tieResults);
       return tieResults;
     } else {
+
       return winner;
     }
 
-    
-  }
+  };
 
   function tieCalculate(talA, talB, talC, talD) {
     // If tie, determine other winner
@@ -154,17 +143,38 @@ function retrieveAndTally () {
       tie2 = "d";
     };
 
-    // Check function
-    console.log(tie1, tie2);
-
     // Store tied winners in an array
     const winners = [tie1, tie2];
 
     return winners;
 
   };
-};
+
 // UI Logic
+
+// Retrieve inputs
+function retrieveInputs() {
+  // Validate input
+  if (!document.querySelector("input[name='question1']:checked") || 
+    !document.querySelector("input[name='question2']:checked") ||
+    !document.querySelector("input[name='question3']:checked") ||
+    !document.querySelector("input[name='question4']:checked") ||
+    !document.querySelector("input[name='question5']:checked")) {
+    // Return error
+    return 0;
+  } else {
+    // Store user answers in variables
+    const ans1 = document.querySelector("input[name='question1']:checked").value;
+    const ans2 = document.querySelector("input[name='question2']:checked").value;
+    const ans3 = document.querySelector("input[name='question3']:checked").value;
+    const ans4 = document.querySelector("input[name='question4']:checked").value;
+    const ans5 = document.querySelector("input[name='question5']:checked").value;
+    // Store in array
+    const answers = [ans1, ans2, ans3, ans4, ans5];
+    return answers;
+  };
+};
+
 // Display results
 function displayResults(winningLang) {
   // Clear previous results
@@ -176,8 +186,8 @@ function displayResults(winningLang) {
   const c = "C#";
   const d = "Python";
 
-  // Check inputs
-  console.log(winningLang);
+  // Check UI inputs
+  // console.log(winningLang);
   
   //Initialize langResult variable for single winner
   let langResult;
@@ -275,8 +285,10 @@ window.addEventListener("load", function() {
   form.addEventListener("submit", function(event) {
     // Prevent page from reloading on submission
     event.preventDefault();
-      // Retrieve & tally answers, calculate results
-      const result = retrieveAndTally();
+      // Retrieve inputs
+      const inputs = retrieveInputs();
+      // Tally answers & calculate results
+      const result = tallyResults(inputs);
       // Display results
       displayResults(result);
   });
@@ -289,4 +301,4 @@ window.addEventListener("load", function() {
     // Hide results
     resetDisplay();
   });
-});
+})
