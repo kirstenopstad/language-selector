@@ -88,7 +88,7 @@ function tallyResults(ansList) {
     // console.log("TallyD = " + tallyD);
 
     return calculateResult(tallyA, tallyB, tallyC, tallyD);
-  };
+  }
 
   function calculateResult(talA, talB, talC, talD) {
     let winner;
@@ -117,7 +117,7 @@ function tallyResults(ansList) {
       return winner;
     }
 
-  };
+  }
 
   function tieCalculate(talA, talB, talC, talD) {
     // If tie, determine other winner
@@ -148,7 +148,7 @@ function tallyResults(ansList) {
 
     return winners;
 
-  };
+  }
 
 // UI Logic
 
@@ -173,7 +173,7 @@ function retrieveInputs() {
     const answers = [ans1, ans2, ans3, ans4, ans5];
     return answers;
   };
-};
+}
 
 // Display results
 function displayResults(winningLang) {
@@ -265,7 +265,7 @@ function displayResults(winningLang) {
     document.getElementById("tieResult2").innerText = tieResult2;
   };  
   
-};
+}
 
 function resetDisplay() {
   // Hide error message
@@ -276,7 +276,7 @@ function resetDisplay() {
   document.getElementById("tie").setAttribute("class", "hidden");
   // Hide not-a-tie div
   document.getElementById("not-a-tie").setAttribute("class", "hidden");
-};
+}
 
 // When page loads, run these functions:
 window.addEventListener("load", function() {
