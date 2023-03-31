@@ -2,152 +2,62 @@
 
 // Tally answers
 function tallyResults(ansList) {
-  
-    // ansList
-    const ans1 = ansList[0];
-    const ans2 = ansList[1];
-    const ans3 = ansList[2];
-    const ans4 = ansList[3];
-    const ans5 = ansList[4];
+  // takes an array of answer keys (a, b, c, d) and outputs an array of winners
 
-    // Tally answers 
+    // Init tallies
     let tallyA = 0;
     let tallyB = 0;
     let tallyC = 0;
     let tallyD = 0;
 
-    // Tabulate answer to question 1
-    if (ans1 === "a") {
-      tallyA += 1;
-    } else if (ans1 === "b") {
-      tallyB += 1;
-    } else if (ans1 === "c") {
-      tallyC += 1;
-    } else if (ans1 === "d") {
-      tallyD += 1;
-    } else {
-      // Display invalid input error below question 1
-    };
+    // Tabulate answers to all questions
+    ansList.forEach((answer) => {
+      if (answer === "a") {
+        tallyA += 1;
+      } else if (answer === "b") {
+        tallyB += 1;
+      } else if (answer === "c") {
+        tallyC += 1;
+      } else if (answer === "d") {
+        tallyD += 1;
+      };
+    })
 
-    // Tabulate answer to question 2
-    if (ans2 === "a") {
-      tallyA += 1;
-    } else if (ans2 === "b") {
-      tallyB += 1;
-    } else if (ans2 === "c") {
-      tallyC += 1;
-    } else if (ans2 === "d") {
-      tallyD += 1;
-    } else {
-      // Display invalid input error below question 2
-    };
-
-    // Tabulate answer to question 3
-    if (ans3 === "a") {
-      tallyA += 1;
-    } else if (ans3 === "b") {
-      tallyB += 1;
-    } else if (ans3 === "c") {
-      tallyC += 1;
-    } else if (ans3 === "d") {
-      tallyD += 1;
-    } else {
-      // Display invalid input error below question 3
-    };
-
-    // Tabulate answer to question 4
-    if (ans4 === "a") {
-      tallyA += 1;
-    } else if (ans4 === "b") {
-      tallyB += 1;
-    } else if (ans4 === "c") {
-      tallyC += 1;
-    } else if (ans4 === "d") {
-      tallyD += 1;
-    } else {
-      // Display invalid input error below question 4
-    };
-
-    // Tabulate answer to question 5
-    if (ans5 === "a") {
-      tallyA += 1;
-    } else if (ans5 === "b") {
-      tallyB += 1;
-    } else if (ans5 === "c") {
-      tallyC += 1;
-    } else if (ans5 === "d") {
-      tallyD += 1;
-    } else {
-      // Display invalid input error below question 5
-    };
+    // add tally data to array
+    const results = { 
+      a: tallyA, 
+      b: tallyB, 
+      c: tallyC, 
+      d: tallyD }
+    
+    // get highest value in array
+    const highScore = Math.max(...Object.values(results))
 
     // Check tally functionality
-    // console.log("TallyA = " + tallyA);
-    // console.log("TallyB = " + tallyB);
-    // console.log("TallyC = " + tallyC);
-    // console.log("TallyD = " + tallyD);
-
-    return calculateResult(tallyA, tallyB, tallyC, tallyD);
-  }
-
-  function calculateResult(talA, talB, talC, talD) {
-    let winner;
-    // Determine which letter has the highest tally
-    if (talA > talB && talA > talC && talA > talD) {
-      winner = "a";
-    } else if (talB > talA && talB > talC && talB > talD) {
-      winner = "b";
-    } else if (talC > talA && talC > talB && talC > talD) {
-      winner = "c";
-    } else if (talD > talA && talD > talB && talD > talC) {
-      winner = "d"; 
-    } else {
-      winner = "tie";
-    };
-
-    // Check calculate functionality
-    // console.log("Winner: " + winner);
-
-    if (winner === "tie") {
-      const tieResults = tieCalculate(talA, talB, talC, talD);
-      // console.log("tieResults: " + tieResults);
-      return tieResults;
-    } else {
-
-      return winner;
-    }
-
-  }
-
-  function tieCalculate(talA, talB, talC, talD) {
-    // If tie, determine other winner
-    let tie1;
-    let tie2;
-    if (talA === 2 && talB === 2) {
-      tie1 = "a";
-      tie2 = "b";
-    } else if (talA === 2 && talC === 2) {
-      tie1 = "a";
-      tie2 = "c"
-    } else if (talA === 2 && talD === 2) {
-      tie1 = "a";
-      tie2 = "d"
-    } else if (talB === 2 && talC === 2) {
-      tie1 = "b";
-      tie2 = "c";
-    } else if (talB === 2 && talD === 2) {
-      tie1 = "b";
-      tie2 = "d"
-    } else if (talC === 2 && talD === 2) {
-      tie1 = "c";
-      tie2 = "d";
-    };
-
-    // Store tied winners in an array
-    const winners = [tie1, tie2];
-
+    console.log("TallyA = " + tallyA);
+    console.log("TallyB = " + tallyB);
+    console.log("TallyC = " + tallyC);
+    console.log("TallyD = " + tallyD);
+    console.log("High Score: " + highScore);
+    console.log(results);
+    
+    // Note: ties allowed!
+    // return winners
+    let winners = []
+    console.log("Winners: " + winners);
+    
+    // iterate through keys
+    Object.keys(results).forEach((key) => {
+      // if value of key is equal to high score
+      if (results[key] === highScore)  {
+        // push key to winners array
+        winners.push(key)
+      }
+    })
+    console.log("Winners: " + winners);
+    
+    // return calculateResult(tallyA, tallyB, tallyC, tallyD);
     return winners;
-
   }
 
 // UI Logic
@@ -252,17 +162,35 @@ function displayResults(winningLang) {
   document.getElementById("results").removeAttribute("class");
 
   // If no tie results
+
+  // Print results
+  let resultToPrint = ""
+  winningLang.forEach((language) => {
+    if (language === "a") {
+      resultToPrint + a
+    } else if (language === "b") {
+      resultToPrint + b
+    } else if (language === "c") {
+      resultToPrint + c
+    } else if (language === "d") {
+      resultToPrint + d
+    } 
+  })
+
+
   if (langResult != "tie") {
     // Unhide results div
     document.getElementById("not-a-tie").removeAttribute("class");
     // Display single winner
     document.getElementById("langResult").innerText = langResult;
+    // document.getElementById("langResult").innerText = resultToPrint;
   } else {
     // Unhide tied text
     document.getElementById("tie").removeAttribute("class");
     // Display which languages are tied 
     document.getElementById("tieResult1").innerText = tieResult1;
     document.getElementById("tieResult2").innerText = tieResult2;
+    document.getElementById("langResult").innerText = resultToPrint;
   };  
   
 }
