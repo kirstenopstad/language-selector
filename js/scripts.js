@@ -34,17 +34,15 @@ function tallyResults(ansList) {
     const highScore = Math.max(...Object.values(results))
 
     // Check tally functionality
-    console.log("TallyA = " + tallyA);
-    console.log("TallyB = " + tallyB);
-    console.log("TallyC = " + tallyC);
-    console.log("TallyD = " + tallyD);
-    console.log("High Score: " + highScore);
-    console.log(results);
+    // console.log("TallyA = " + tallyA);
+    // console.log("TallyB = " + tallyB);
+    // console.log("TallyC = " + tallyC);
+    // console.log("TallyD = " + tallyD);
+    // console.log("High Score: " + highScore);
+    // console.log(results);
     
-    // Note: ties allowed!
     // return winners
     let winners = []
-    console.log("Winners: " + winners);
     
     // iterate through keys
     Object.keys(results).forEach((key) => {
@@ -54,7 +52,7 @@ function tallyResults(ansList) {
         winners.push(key)
       }
     })
-    console.log("Winners: " + winners);
+    // console.log("Winners: " + winners);
     
     // return calculateResult(tallyA, tallyB, tallyC, tallyD);
     return winners;
@@ -86,7 +84,7 @@ function retrieveInputs() {
 }
 
 // Display results
-function displayResults(winningLang) {
+function displayResults(winners) {
   // Clear previous results
   resetDisplay();
 
@@ -97,56 +95,10 @@ function displayResults(winningLang) {
   const d = "Python";
 
   // Check UI inputs
-  // console.log(winningLang);
-  
-  //Initialize langResult variable for single winner
-  let langResult;
-
-  // Determine language name for single winner
-  if (winningLang === "a") {
-    langResult = a;
-  } else if (winningLang === "b") {
-    langResult = b;
-  } else if (winningLang === "c") {
-    langResult = c;
-  } else if (winningLang === "d") {
-    langResult = d;
-  } else {
-    // if tie
-    langResult = "tie"
-  };
-
-  // Tie Conditions:
-
-  // Define individual tied winners by accessing index of array input
-  const tie1 = winningLang[0];
-  const tie2 = winningLang[1];
-
-  // Initialize tieResult variables
-  let tieResult1;
-  let tieResult2;
-
-  // Determine language names for tie
-  if (tie1 === "a") {
-    tieResult1 = a;
-  } else if (tie1 === "b") {
-    tieResult1 = b;
-  } else if (tie1 === "c") {
-    tieResult1 = c;
-  } else {
-    tieResult1 = d;
-  };
-
-  if (tie2 === "b") {
-    tieResult2 = b;
-  } else if (tie2 === "c") {
-    tieResult2 = c;
-  } else {
-    tieResult2 = d;
-  };
+  // console.log(winners);
   
   // If error 
-  if (winningLang === 0) {
+  if (winners === 0) {
     // Display error
     document.getElementById("error").removeAttribute("class");
     return 0;
@@ -161,38 +113,31 @@ function displayResults(winningLang) {
   // Unhide results div
   document.getElementById("results").removeAttribute("class");
 
-  // If no tie results
-
-  // Print results
-  let resultToPrint = ""
-  winningLang.forEach((language) => {
-    if (language === "a") {
-      resultToPrint + a
-    } else if (language === "b") {
-      resultToPrint + b
-    } else if (language === "c") {
-      resultToPrint + c
-    } else if (language === "d") {
-      resultToPrint + d
+  // if single winner
+  const getResult = (letter) => {
+    if (letter === "a") {
+      return a
+    } else if (letter === "b") {
+      return b
+    } else if (letter === "c") {
+      return c
+    } else if (letter === "d") {
+      return d
     } 
-  })
+  }
 
+  // Add first winner
+  let resultToPrint = getResult(winners[0])
+  // Add tied winner(s) 
+  for (i = 1; i < winners.length; i++) {
+    resultToPrint = resultToPrint + ` & ${getResult(winners[i])}`
+  } 
 
-  if (langResult != "tie") {
-    // Unhide results div
-    document.getElementById("not-a-tie").removeAttribute("class");
-    // Display single winner
-    document.getElementById("langResult").innerText = langResult;
-    // document.getElementById("langResult").innerText = resultToPrint;
-  } else {
-    // Unhide tied text
-    document.getElementById("tie").removeAttribute("class");
-    // Display which languages are tied 
-    document.getElementById("tieResult1").innerText = tieResult1;
-    document.getElementById("tieResult2").innerText = tieResult2;
-    document.getElementById("langResult").innerText = resultToPrint;
-  };  
-  
+  // Unhide results div
+  document.getElementById("not-a-tie").removeAttribute("class");
+  // Print results to screen
+  document.getElementById("langResult").innerText = resultToPrint;
+
 }
 
 function resetDisplay() {
